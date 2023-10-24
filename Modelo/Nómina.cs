@@ -56,20 +56,24 @@ namespace Modelo
 
             int YearInicio = FechaContratacion.Year;
             int yearTotales= YearActual-YearInicio;
-
-            if(yearTotales < 4)
-            {
-                double antiguedad1 = SalarioBase / 12;
-                return antiguedad1;
-            }else if (yearTotales > 5 || yearTotales<6)
-            {
-                double antiguedad2 = CalcularSalarioPorHora()*160;
-                return antiguedad2;
-            }
-            else
+            if (yearTotales > 6)
             {
                 return 0;
             }
+            if (yearTotales < 4)
+            {
+                double antiguedad1 = SalarioBase / 12;
+                return antiguedad1;
+            }
+            if (yearTotales > 5 || yearTotales<6)
+            {
+               double antiguedad2 = (CalcularSalarioPorDia() * 20) / 12;
+
+                return antiguedad2;
+            }
+            
+            else
+                return 0;
 
         }
 

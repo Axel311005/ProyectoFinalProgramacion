@@ -22,6 +22,18 @@ namespace Modelo
             return (base.CalcularRiesgoLaboral())/2;
         }
 
+        public override double CalcularSalarioPorDia()
+        {
+            double SalarioxDia = SalarioBase / 30;
+            return SalarioxDia;
+        }
+        public override double CalcularSalarioPorHora()
+        {
+            double SalarioxHora = CalcularSalarioPorDia() / 8;
+
+            return SalarioxHora;
+        }
+
         public override double CalcularPagoHorasExtras()
         {
             return base.CalcularPagoHorasExtras();
@@ -29,7 +41,29 @@ namespace Modelo
 
         public override double CalcularAntiguedad()
         {
-            return (base.CalcularAntiguedad())/2;
+            DateTime year = DateTime.Now;
+            int YearActual = year.Year;
+
+            int YearInicio = FechaContratacion.Year;
+            int yearTotales = YearActual - YearInicio;
+            if (yearTotales > 6)
+            {
+                return 0;
+            }
+            if (yearTotales < 4)
+            {
+                double antiguedad1 = SalarioBase / 12;
+                return antiguedad1;
+            }
+            if (yearTotales > 5 || yearTotales < 6)
+            {
+                double antiguedad2 = (CalcularSalarioPorDia() * 20) / 12;
+
+                return antiguedad2;
+            }
+
+            else
+                return 0;
         }
 
         public override double TotalIngresos()
