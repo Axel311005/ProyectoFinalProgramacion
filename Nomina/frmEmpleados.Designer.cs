@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label1 = new Label();
             DatosIdentidad = new GroupBox();
             txtCedula = new TextBox();
@@ -72,7 +72,6 @@
             label19 = new Label();
             label18 = new Label();
             btnAgregarEmpleado = new Button();
-            btnCalcularNomina = new Button();
             btnSalir = new Button();
             btnExportar = new Button();
             Ingresos = new GroupBox();
@@ -176,6 +175,7 @@
             txtCedula.Name = "txtCedula";
             txtCedula.Size = new Size(174, 26);
             txtCedula.TabIndex = 27;
+            txtCedula.KeyPress += txtCedula_KeyPress;
             // 
             // txtSegundoApellido
             // 
@@ -184,6 +184,7 @@
             txtSegundoApellido.Name = "txtSegundoApellido";
             txtSegundoApellido.Size = new Size(174, 26);
             txtSegundoApellido.TabIndex = 26;
+            txtSegundoApellido.KeyPress += txtSegundoApellido_KeyPress;
             // 
             // txtPrimerApellido
             // 
@@ -192,6 +193,7 @@
             txtPrimerApellido.Name = "txtPrimerApellido";
             txtPrimerApellido.Size = new Size(174, 26);
             txtPrimerApellido.TabIndex = 25;
+            txtPrimerApellido.KeyPress += txtPrimerApellido_KeyPress;
             // 
             // txtSegundoNombre
             // 
@@ -200,6 +202,7 @@
             txtSegundoNombre.Name = "txtSegundoNombre";
             txtSegundoNombre.Size = new Size(174, 26);
             txtSegundoNombre.TabIndex = 24;
+            txtSegundoNombre.KeyPress += txtSegundoNombre_KeyPress;
             // 
             // txtPrimerNombre
             // 
@@ -208,6 +211,7 @@
             txtPrimerNombre.Name = "txtPrimerNombre";
             txtPrimerNombre.Size = new Size(174, 26);
             txtPrimerNombre.TabIndex = 23;
+            txtPrimerNombre.KeyPress += txtPrimerNombre_KeyPress;
             // 
             // label6
             // 
@@ -284,9 +288,10 @@
             // FechaNacimiento
             // 
             FechaNacimiento.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            FechaNacimiento.Format = DateTimePickerFormat.Short;
             FechaNacimiento.Location = new Point(0, 283);
             FechaNacimiento.Name = "FechaNacimiento";
-            FechaNacimiento.Size = new Size(430, 26);
+            FechaNacimiento.Size = new Size(335, 26);
             FechaNacimiento.TabIndex = 11;
             // 
             // label12
@@ -306,6 +311,7 @@
             txtCelular.Name = "txtCelular";
             txtCelular.Size = new Size(208, 26);
             txtCelular.TabIndex = 9;
+            txtCelular.KeyPress += txtCelular_KeyPress;
             // 
             // txtTelefono
             // 
@@ -314,6 +320,7 @@
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(208, 26);
             txtTelefono.TabIndex = 8;
+            txtTelefono.KeyPress += txtTelefono_KeyPress;
             // 
             // txtDireccion
             // 
@@ -414,18 +421,21 @@
             // FechaCierreContrato
             // 
             FechaCierreContrato.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            FechaCierreContrato.Format = DateTimePickerFormat.Short;
             FechaCierreContrato.Location = new Point(0, 283);
             FechaCierreContrato.Name = "FechaCierreContrato";
-            FechaCierreContrato.Size = new Size(429, 26);
+            FechaCierreContrato.Size = new Size(315, 26);
             FechaCierreContrato.TabIndex = 9;
             // 
             // FechaContratacion
             // 
             FechaContratacion.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
+            FechaContratacion.Format = DateTimePickerFormat.Short;
             FechaContratacion.Location = new Point(0, 209);
             FechaContratacion.Name = "FechaContratacion";
-            FechaContratacion.Size = new Size(429, 26);
+            FechaContratacion.Size = new Size(315, 26);
             FechaContratacion.TabIndex = 8;
+            FechaContratacion.ValueChanged += FechaContratacion_ValueChanged;
             // 
             // txtRuc
             // 
@@ -434,6 +444,7 @@
             txtRuc.Name = "txtRuc";
             txtRuc.Size = new Size(165, 26);
             txtRuc.TabIndex = 7;
+            txtRuc.KeyPress += txtRuc_KeyPress;
             // 
             // txtInss
             // 
@@ -442,6 +453,7 @@
             txtInss.Name = "txtInss";
             txtInss.Size = new Size(165, 26);
             txtInss.TabIndex = 6;
+            txtInss.KeyPress += txtInss_KeyPress;
             // 
             // txtNoEmpleado
             // 
@@ -450,6 +462,7 @@
             txtNoEmpleado.Name = "txtNoEmpleado";
             txtNoEmpleado.Size = new Size(165, 26);
             txtNoEmpleado.TabIndex = 5;
+            txtNoEmpleado.KeyPress += txtNoEmpleado_KeyPress;
             // 
             // label17
             // 
@@ -531,6 +544,7 @@
             txtSalarioBase.Name = "txtSalarioBase";
             txtSalarioBase.Size = new Size(194, 26);
             txtSalarioBase.TabIndex = 2;
+            txtSalarioBase.KeyPress += txtSalarioBase_KeyPress;
             // 
             // label19
             // 
@@ -565,25 +579,12 @@
             btnAgregarEmpleado.UseVisualStyleBackColor = false;
             btnAgregarEmpleado.Click += btnAgregarEmpleado_Click;
             // 
-            // btnCalcularNomina
-            // 
-            btnCalcularNomina.BackColor = Color.Red;
-            btnCalcularNomina.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCalcularNomina.ForeColor = Color.White;
-            btnCalcularNomina.Location = new Point(2382, 133);
-            btnCalcularNomina.Name = "btnCalcularNomina";
-            btnCalcularNomina.Size = new Size(159, 46);
-            btnCalcularNomina.TabIndex = 7;
-            btnCalcularNomina.Text = "CALCULAR NOMINA";
-            btnCalcularNomina.UseVisualStyleBackColor = false;
-            btnCalcularNomina.Click += btnCalcularNomina_Click;
-            // 
             // btnSalir
             // 
             btnSalir.BackColor = Color.Red;
             btnSalir.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = Color.White;
-            btnSalir.Location = new Point(2382, 196);
+            btnSalir.Location = new Point(2382, 154);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(159, 46);
             btnSalir.TabIndex = 8;
@@ -595,12 +596,13 @@
             btnExportar.BackColor = Color.Red;
             btnExportar.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
             btnExportar.ForeColor = Color.White;
-            btnExportar.Location = new Point(2382, 260);
+            btnExportar.Location = new Point(2382, 234);
             btnExportar.Name = "btnExportar";
             btnExportar.Size = new Size(159, 46);
             btnExportar.TabIndex = 9;
             btnExportar.Text = "EXPORTAR";
             btnExportar.UseVisualStyleBackColor = false;
+            btnExportar.Click += btnExportar_Click;
             // 
             // Ingresos
             // 
@@ -646,6 +648,7 @@
             txtMontoOtrosIngresos.Name = "txtMontoOtrosIngresos";
             txtMontoOtrosIngresos.Size = new Size(138, 26);
             txtMontoOtrosIngresos.TabIndex = 4;
+            txtMontoOtrosIngresos.KeyPress += txtMontoOtrosIngresos_KeyPress;
             // 
             // txtConceptoOtrosIngresos
             // 
@@ -654,6 +657,7 @@
             txtConceptoOtrosIngresos.Name = "txtConceptoOtrosIngresos";
             txtConceptoOtrosIngresos.Size = new Size(138, 26);
             txtConceptoOtrosIngresos.TabIndex = 3;
+            txtConceptoOtrosIngresos.KeyPress += txtConceptoOtrosIngresos_KeyPress;
             // 
             // txtHorasExtras
             // 
@@ -662,6 +666,7 @@
             txtHorasExtras.Name = "txtHorasExtras";
             txtHorasExtras.Size = new Size(138, 26);
             txtHorasExtras.TabIndex = 2;
+            txtHorasExtras.KeyPress += txtHorasExtras_KeyPress;
             // 
             // label22
             // 
@@ -705,6 +710,7 @@
             txtConceptoOtrasDeducciones.Name = "txtConceptoOtrasDeducciones";
             txtConceptoOtrasDeducciones.Size = new Size(153, 26);
             txtConceptoOtrasDeducciones.TabIndex = 4;
+            txtConceptoOtrasDeducciones.KeyPress += txtConceptoOtrasDeducciones_KeyPress;
             // 
             // label24
             // 
@@ -733,6 +739,7 @@
             txtMontoOtrasDeducciones.Name = "txtMontoOtrasDeducciones";
             txtMontoOtrasDeducciones.Size = new Size(159, 26);
             txtMontoOtrasDeducciones.TabIndex = 1;
+            txtMontoOtrasDeducciones.KeyPress += txtMontoOtrasDeducciones_KeyPress;
             // 
             // label26
             // 
@@ -748,14 +755,14 @@
             // 
             dgvDatosEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDatosEmpleado.Columns.AddRange(new DataGridViewColumn[] { NumeroEmpleado, Cedula, NoInss, NoRuc, PNombre, SNombre, PApellido, SApellido, Nacimiento, Sexo, EstadoCivil, Dirección, Teléfono, Celular, InicioContrato, CierreContrato, SalarioBase, Estado });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvDatosEmpleado.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvDatosEmpleado.DefaultCellStyle = dataGridViewCellStyle1;
             dgvDatosEmpleado.Location = new Point(1, 398);
             dgvDatosEmpleado.Name = "dgvDatosEmpleado";
             dgvDatosEmpleado.RowHeadersWidth = 82;
@@ -893,14 +900,14 @@
             // 
             dgvNomina.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNomina.Columns.AddRange(new DataGridViewColumn[] { NoEmpleado2, PNombre2, sNombre2, pApellido2, SApellido2, SalarioBase2, Antiguedad, RiesgoLaboral, Nocturnidad, ConceptoOI, MontoOI, HorasExtras, TotalIngresos, Inss, IR, ConceptoOD, MontoOD, Deducciones2, SalarioNeto });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvNomina.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvNomina.DefaultCellStyle = dataGridViewCellStyle2;
             dgvNomina.Location = new Point(1, 842);
             dgvNomina.Name = "dgvNomina";
             dgvNomina.RowHeadersWidth = 82;
@@ -1048,6 +1055,8 @@
             cboTipoPlanilla.Name = "cboTipoPlanilla";
             cboTipoPlanilla.Size = new Size(205, 40);
             cboTipoPlanilla.TabIndex = 14;
+            cboTipoPlanilla.Text = "Seleccione";
+            cboTipoPlanilla.SelectedIndexChanged += cboTipoPlanilla_SelectedIndexChanged;
             // 
             // frmEmpleados
             // 
@@ -1062,7 +1071,6 @@
             Controls.Add(Ingresos);
             Controls.Add(btnExportar);
             Controls.Add(btnSalir);
-            Controls.Add(btnCalcularNomina);
             Controls.Add(btnAgregarEmpleado);
             Controls.Add(OtrosDatos);
             Controls.Add(DatosLaborales);
@@ -1135,7 +1143,6 @@
         private Label label19;
         private Label label18;
         private Button btnAgregarEmpleado;
-        private Button btnCalcularNomina;
         private Button btnSalir;
         private Button btnExportar;
         private GroupBox Ingresos;

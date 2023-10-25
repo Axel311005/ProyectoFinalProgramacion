@@ -45,27 +45,28 @@ namespace Modelo
 
         public virtual double CalcularPagoHorasExtras()
         {
-
-            return CalcularSalarioPorHora()*2*HorasExtras;
+            if(HorasExtras != 0)
+            {
+                return CalcularSalarioPorHora() * 2 * HorasExtras;
+            }
+            else
+                return 0;
+            
         }
 
         public virtual double CalcularAntiguedad()
         {
-            DateTime year = DateTime.Now;
-            int YearActual = year.Year;
-
-            int YearInicio = FechaContratacion.Year;
-            int yearTotales= YearActual-YearInicio;
-            if (yearTotales > 6)
+            
+            if (YearsTrabajados > 6)
             {
                 return 0;
             }
-            if (yearTotales < 4)
+            if (YearsTrabajados < 4)
             {
                 double antiguedad1 = SalarioBase / 12;
                 return antiguedad1;
             }
-            if (yearTotales > 5 || yearTotales<6)
+            if (YearsTrabajados > 5 || YearsTrabajados <6)
             {
                double antiguedad2 = (CalcularSalarioPorDia() * 20) / 12;
 
@@ -80,7 +81,7 @@ namespace Modelo
         public virtual double TotalIngresos()
         {
             double total = SalarioBase +CalcularRiesgoLaboral()+CalcularNorturnidad()
-                +CalcularPagoHorasExtras()+ OtrosIngresos;
+                + CalcularPagoHorasExtras() + OtrosIngresos;
 
             return total;
         }
@@ -101,37 +102,33 @@ namespace Modelo
         public virtual double CalcularIR()
         {
 
-            if (IngresoAnual() > 500000.01)
-            {
-                double calculo3 = (IngresoAnual() - 500000)*0.30;
-                double ir4 = (calculo3 + 82500) / 12;
-                return ir4;
-            }
-            if (IngresoAnual() <= 500000 || IngresoAnual() >= 350000.01)
-            {
-                   double calculo2 = (IngresoAnual() - 350000)*0.25;
-                    double ir3 = (calculo2 + 45000) / 12;
-                   return ir3;
 
-            }
-            if (IngresoAnual() <= 350000 || IngresoAnual() >= 200000.01)
+            double anual = IngresoAnual();
+            double ir = 0;  
+
+            if (anual > 500000.01)
             {
-                   double calculo1 = (IngresoAnual() - 200000) * 0.2;
-                  double ir2 = (calculo1 + 15000)/12;
-                   return ir2;
+                double calculo3 = (anual - 500000) * 0.30;
+                ir = (calculo3 + 82500) / 12;
             }
-            if (IngresoAnual() <= 200000 || IngresoAnual() >= 100000.01)
+            else if (anual >= 350000.01)
             {
-                   double sobreexceso1 = 100000;
-                   double TotalaDeducir1 = IngresoAnual() - sobreexceso1;
-                   double ir1 = (TotalaDeducir1 * 0.15)/12;
-                   return ir1;
+                double calculo2 = (anual - 350000) * 0.25;
+                ir = (calculo2 + 45000) / 12;
             }
-            else
+            else if (anual >= 200000.01)
             {
-                return 0;
+                double calculo1 = (anual - 200000) * 0.2;
+                ir = (calculo1 + 15000) / 12;
+            }
+            else if (anual >= 100000.01)
+            {
+                double sobreexceso1 = 100000;
+                double TotalaDeducir1 = anual - sobreexceso1;
+                ir = (TotalaDeducir1 * 0.15) / 12;
             }
 
+            return ir;
         }
 
         public virtual double TotalDeducciones()

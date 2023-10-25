@@ -35,5 +35,6 @@ namespace Modelo
         public double INSS { get; set ; }
         public double IR { get ; set ; }
         public double OtrasDeducciones { get ; set ; }
+        public int YearsTrabajados { get; set ; }
     }
 }

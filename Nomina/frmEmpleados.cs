@@ -1,4 +1,6 @@
 using Modelo;
+using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Nomina
 {
@@ -7,6 +9,11 @@ namespace Nomina
         public frmEmpleados()
         {
             InitializeComponent();
+
+            cboEstadoCivil.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboEstadoEmpleado.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboSexo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboTipoPlanilla.DropDownStyle = ComboBoxStyle.DropDownList;
 
 
         }
@@ -122,7 +129,7 @@ namespace Nomina
             }
         }
 
-        
+
 
         private void Agregar()
         {
@@ -152,6 +159,258 @@ namespace Nomina
             return "";
         }
 
+        private void FechaContratacion_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime fechaActual = DateTime.Today;
 
+            int yearstrabajados = (int)(fechaActual.Year - FechaContratacion.Value.Year);
+            if (fechaActual < FechaContratacion.Value.AddYears(yearstrabajados))
+            {
+                yearstrabajados--;
+            }
+
+            nomina.YearsTrabajados = yearstrabajados;
+            quincenal.YearsTrabajados = yearstrabajados;
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            int maxLength = 8;
+
+            if (txtTelefono.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            int maxLength = 8;
+
+            if (txtCelular.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNoEmpleado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            int maxLength = 5;
+
+            if (txtNoEmpleado.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSalarioBase_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            int maxLength = 6;
+
+            if (txtSalarioBase.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtHorasExtras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            int maxLength = 2;
+
+            if (txtHorasExtras.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMontoOtrosIngresos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            int maxLength = 5;
+
+            if (txtMontoOtrosIngresos.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMontoOtrasDeducciones_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            int maxLength = 5;
+
+            if (txtMontoOtrasDeducciones.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrimerNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSegundoNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrimerApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSegundoApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtConceptoOtrosIngresos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtConceptoOtrasDeducciones_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+
+            // solo puede ser una letra
+        }
+
+        private void txtInss_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            int maxLength = 7;
+
+            if (txtInss.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRuc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //solo se puede ingresar una letra 
+        }
+
+
+        
+
+        private void cboTipoPlanilla_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+
+        private void ExportarDataGridViewsAExcel(DataGridView dataGridView1, DataGridView dataGridView2)
+        {
+            // Crear un cuadro de diálogo para guardar el archivo Excel
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Archivos de Excel (*.xlsx)|*.xlsx";
+            saveFileDialog.Title = "Guardar archivo de Excel";
+            saveFileDialog.FileName = "MiArchivo.xlsx"; // Nombre predeterminado del archivo
+
+            
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string rutaArchivo = saveFileDialog.FileName;
+
+                Excel.Application excelApp = new Excel.Application();
+                Excel.Workbook workbook = excelApp.Workbooks.Add();
+
+                ExportarDataGridViewAExcel(dataGridView1, workbook, "Hoja1");
+                ExportarDataGridViewAExcel(dataGridView2, workbook, "Hoja2");
+
+                // Guardar el archivo de Excel en la ubicación seleccionada por el usuario
+                workbook.SaveAs(rutaArchivo);
+                workbook.Close();
+                excelApp.Quit();
+
+                // Liberar los recursos
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(workbook);
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
+            }
+        }
+
+        private void ExportarDataGridViewAExcel(DataGridView dataGridView, Excel.Workbook workbook, string nombreHoja)
+        {
+            Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets.Add();
+
+            
+
+            // Copiar los encabezados de las columnas
+            for (int i = 1; i <= dataGridView.Columns.Count; i++)
+            {
+                worksheet.Cells[1, i] = dataGridView.Columns[i - 1].HeaderText;
+            }
+
+            // Copiar los datos del DataGridView
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                for (int j = 0; j < dataGridView.Columns.Count; j++)
+                {
+                    worksheet.Cells[i + 2, j + 1] = dataGridView.Rows[i].Cells[j].Value;
+                }
+            }
+        }
+
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            ExportarDataGridViewsAExcel(dgvDatosEmpleado, dgvNomina);
+        }
     }
 }
