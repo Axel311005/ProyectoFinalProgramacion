@@ -322,8 +322,33 @@ namespace Nomina
         private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+            if (char.IsDigit(e.KeyChar))
+            {
 
-            // solo puede ser una letra
+                if (txtCedula.Text.Length >= 13)
+                {
+                    e.Handled = true;
+                }
+            }
+
+            else if (char.IsLetter(e.KeyChar) && char.IsUpper(e.KeyChar))
+            {
+
+                if (txtCedula.Text.Length != 13)
+                {
+                    e.Handled = true;
+                }
+            }
+
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+
         }
 
         private void txtInss_KeyPress(object sender, KeyPressEventArgs e)
@@ -342,7 +367,37 @@ namespace Nomina
 
         private void txtRuc_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //solo se puede ingresar una letra 
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+                return;
+            }
+
+            if (txtRuc.Text.Length >= 14)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (txtRuc.Text.Length == 0)
+            {
+                if (char.IsLetter(e.KeyChar) && char.IsUpper(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            else if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
 
 
