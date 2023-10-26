@@ -377,7 +377,7 @@ namespace Nomina
             {
                 e.Handled = true;
                 return;
-            } 
+            }
 
             if (txtRuc.Text.Length == 0)
             {
@@ -401,11 +401,11 @@ namespace Nomina
         }
 
 
-        
+
 
         private void cboTipoPlanilla_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -417,7 +417,7 @@ namespace Nomina
             saveFileDialog.Title = "Guardar archivo de Excel";
             saveFileDialog.FileName = "MiArchivo.xlsx"; // Nombre predeterminado del archivo
 
-            
+
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -444,7 +444,7 @@ namespace Nomina
         {
             Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets.Add();
 
-            
+
 
             // Copiar los encabezados de las columnas
             for (int i = 1; i <= dataGridView.Columns.Count; i++)
@@ -467,5 +467,7 @@ namespace Nomina
         {
             ExportarDataGridViewsAExcel(dgvDatosEmpleado, dgvNomina);
         }
+
+
     }
 }
