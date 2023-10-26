@@ -377,7 +377,7 @@ namespace Nomina
             {
                 e.Handled = true;
                 return;
-            }
+            } 
 
             if (txtRuc.Text.Length == 0)
             {
