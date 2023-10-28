@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             label1 = new Label();
             DatosIdentidad = new GroupBox();
             txtCedula = new TextBox();
@@ -128,6 +128,7 @@
             Deducciones2 = new DataGridViewTextBoxColumn();
             SalarioNeto = new DataGridViewTextBoxColumn();
             cboTipoPlanilla = new ComboBox();
+            btnBorrar = new Button();
             DatosIdentidad.SuspendLayout();
             OtrosDatosPersonales.SuspendLayout();
             DatosLaborales.SuspendLayout();
@@ -755,14 +756,14 @@
             // 
             dgvDatosEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDatosEmpleado.Columns.AddRange(new DataGridViewColumn[] { NumeroEmpleado, Cedula, NoInss, NoRuc, PNombre, SNombre, PApellido, SApellido, Nacimiento, Sexo, EstadoCivil, Dirección, Teléfono, Celular, InicioContrato, CierreContrato, SalarioBase, Estado });
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dgvDatosEmpleado.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvDatosEmpleado.DefaultCellStyle = dataGridViewCellStyle3;
             dgvDatosEmpleado.Location = new Point(1, 398);
             dgvDatosEmpleado.Name = "dgvDatosEmpleado";
             dgvDatosEmpleado.RowHeadersWidth = 82;
@@ -900,14 +901,14 @@
             // 
             dgvNomina.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNomina.Columns.AddRange(new DataGridViewColumn[] { NoEmpleado2, PNombre2, sNombre2, pApellido2, SApellido2, SalarioBase2, Antiguedad, RiesgoLaboral, Nocturnidad, ConceptoOI, MontoOI, HorasExtras, TotalIngresos, Inss, IR, ConceptoOD, MontoOD, Deducciones2, SalarioNeto });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvNomina.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvNomina.DefaultCellStyle = dataGridViewCellStyle4;
             dgvNomina.Location = new Point(1, 842);
             dgvNomina.Name = "dgvNomina";
             dgvNomina.RowHeadersWidth = 82;
@@ -1058,12 +1059,23 @@
             cboTipoPlanilla.Text = "Seleccione";
             cboTipoPlanilla.SelectedIndexChanged += cboTipoPlanilla_SelectedIndexChanged;
             // 
+            // btnBorrar
+            // 
+            btnBorrar.Location = new Point(2331, 309);
+            btnBorrar.Name = "btnBorrar";
+            btnBorrar.Size = new Size(210, 46);
+            btnBorrar.TabIndex = 15;
+            btnBorrar.Text = "Borrar Empleado";
+            btnBorrar.UseVisualStyleBackColor = true;
+            btnBorrar.Click += btnBorrar_Click;
+            // 
             // frmEmpleados
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.CornflowerBlue;
             ClientSize = new Size(2564, 1354);
+            Controls.Add(btnBorrar);
             Controls.Add(cboTipoPlanilla);
             Controls.Add(dgvNomina);
             Controls.Add(dgvDatosEmpleado);
@@ -1199,5 +1211,6 @@
         private DataGridViewTextBoxColumn Deducciones2;
         private DataGridViewTextBoxColumn SalarioNeto;
         private ComboBox cboTipoPlanilla;
+        private Button btnBorrar;
     }
 }
