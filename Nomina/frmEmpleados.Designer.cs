@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             label1 = new Label();
             DatosIdentidad = new GroupBox();
             txtCedula = new TextBox();
@@ -89,6 +89,7 @@
             txtMontoOtrasDeducciones = new TextBox();
             label26 = new Label();
             dgvDatosEmpleado = new DataGridView();
+            btnPlanilla = new Button();
             NumeroEmpleado = new DataGridViewTextBoxColumn();
             Cedula = new DataGridViewTextBoxColumn();
             NoInss = new DataGridViewTextBoxColumn();
@@ -107,28 +108,6 @@
             CierreContrato = new DataGridViewTextBoxColumn();
             SalarioBase = new DataGridViewTextBoxColumn();
             Estado = new DataGridViewTextBoxColumn();
-            dgvNomina = new DataGridView();
-            NoEmpleado2 = new DataGridViewTextBoxColumn();
-            PNombre2 = new DataGridViewTextBoxColumn();
-            sNombre2 = new DataGridViewTextBoxColumn();
-            pApellido2 = new DataGridViewTextBoxColumn();
-            SApellido2 = new DataGridViewTextBoxColumn();
-            SalarioBase2 = new DataGridViewTextBoxColumn();
-            Antiguedad = new DataGridViewTextBoxColumn();
-            RiesgoLaboral = new DataGridViewTextBoxColumn();
-            Nocturnidad = new DataGridViewTextBoxColumn();
-            ConceptoOI = new DataGridViewTextBoxColumn();
-            MontoOI = new DataGridViewTextBoxColumn();
-            HorasExtras = new DataGridViewTextBoxColumn();
-            TotalIngresos = new DataGridViewTextBoxColumn();
-            Inss = new DataGridViewTextBoxColumn();
-            IR = new DataGridViewTextBoxColumn();
-            ConceptoOD = new DataGridViewTextBoxColumn();
-            MontoOD = new DataGridViewTextBoxColumn();
-            Deducciones2 = new DataGridViewTextBoxColumn();
-            SalarioNeto = new DataGridViewTextBoxColumn();
-            cboTipoPlanilla = new ComboBox();
-            btnBorrar = new Button();
             DatosIdentidad.SuspendLayout();
             OtrosDatosPersonales.SuspendLayout();
             DatosLaborales.SuspendLayout();
@@ -136,7 +115,6 @@
             Ingresos.SuspendLayout();
             Deducciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDatosEmpleado).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvNomina).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -164,7 +142,7 @@
             DatosIdentidad.Font = new Font("Arial", 7.875F, FontStyle.Regular, GraphicsUnit.Point);
             DatosIdentidad.Location = new Point(32, 72);
             DatosIdentidad.Name = "DatosIdentidad";
-            DatosIdentidad.Size = new Size(453, 309);
+            DatosIdentidad.Size = new Size(360, 320);
             DatosIdentidad.TabIndex = 2;
             DatosIdentidad.TabStop = false;
             DatosIdentidad.Text = "DATOS DE IDENTIDAD";
@@ -174,7 +152,7 @@
             txtCedula.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
             txtCedula.Location = new Point(189, 212);
             txtCedula.Name = "txtCedula";
-            txtCedula.Size = new Size(174, 26);
+            txtCedula.Size = new Size(141, 26);
             txtCedula.TabIndex = 27;
             txtCedula.KeyPress += txtCedula_KeyPress;
             // 
@@ -183,7 +161,7 @@
             txtSegundoApellido.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
             txtSegundoApellido.Location = new Point(189, 173);
             txtSegundoApellido.Name = "txtSegundoApellido";
-            txtSegundoApellido.Size = new Size(174, 26);
+            txtSegundoApellido.Size = new Size(141, 26);
             txtSegundoApellido.TabIndex = 26;
             txtSegundoApellido.KeyPress += txtSegundoApellido_KeyPress;
             // 
@@ -192,7 +170,7 @@
             txtPrimerApellido.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
             txtPrimerApellido.Location = new Point(189, 127);
             txtPrimerApellido.Name = "txtPrimerApellido";
-            txtPrimerApellido.Size = new Size(174, 26);
+            txtPrimerApellido.Size = new Size(141, 26);
             txtPrimerApellido.TabIndex = 25;
             txtPrimerApellido.KeyPress += txtPrimerApellido_KeyPress;
             // 
@@ -201,7 +179,7 @@
             txtSegundoNombre.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
             txtSegundoNombre.Location = new Point(189, 89);
             txtSegundoNombre.Name = "txtSegundoNombre";
-            txtSegundoNombre.Size = new Size(174, 26);
+            txtSegundoNombre.Size = new Size(141, 26);
             txtSegundoNombre.TabIndex = 24;
             txtSegundoNombre.KeyPress += txtSegundoNombre_KeyPress;
             // 
@@ -210,7 +188,7 @@
             txtPrimerNombre.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
             txtPrimerNombre.Location = new Point(189, 49);
             txtPrimerNombre.Name = "txtPrimerNombre";
-            txtPrimerNombre.Size = new Size(174, 26);
+            txtPrimerNombre.Size = new Size(141, 26);
             txtPrimerNombre.TabIndex = 23;
             txtPrimerNombre.KeyPress += txtPrimerNombre_KeyPress;
             // 
@@ -279,9 +257,9 @@
             OtrosDatosPersonales.Controls.Add(label8);
             OtrosDatosPersonales.Controls.Add(label7);
             OtrosDatosPersonales.Font = new Font("Arial", 7.875F, FontStyle.Regular, GraphicsUnit.Point);
-            OtrosDatosPersonales.Location = new Point(514, 72);
+            OtrosDatosPersonales.Location = new Point(410, 72);
             OtrosDatosPersonales.Name = "OtrosDatosPersonales";
-            OtrosDatosPersonales.Size = new Size(445, 320);
+            OtrosDatosPersonales.Size = new Size(341, 320);
             OtrosDatosPersonales.TabIndex = 3;
             OtrosDatosPersonales.TabStop = false;
             OtrosDatosPersonales.Text = "OTROS DATOS PERSONALES";
@@ -292,7 +270,7 @@
             FechaNacimiento.Format = DateTimePickerFormat.Short;
             FechaNacimiento.Location = new Point(0, 283);
             FechaNacimiento.Name = "FechaNacimiento";
-            FechaNacimiento.Size = new Size(335, 26);
+            FechaNacimiento.Size = new Size(310, 26);
             FechaNacimiento.TabIndex = 11;
             // 
             // label12
@@ -310,16 +288,16 @@
             txtCelular.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
             txtCelular.Location = new Point(126, 212);
             txtCelular.Name = "txtCelular";
-            txtCelular.Size = new Size(208, 26);
+            txtCelular.Size = new Size(184, 26);
             txtCelular.TabIndex = 9;
             txtCelular.KeyPress += txtCelular_KeyPress;
             // 
             // txtTelefono
             // 
             txtTelefono.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
-            txtTelefono.Location = new Point(127, 176);
+            txtTelefono.Location = new Point(126, 176);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(208, 26);
+            txtTelefono.Size = new Size(184, 26);
             txtTelefono.TabIndex = 8;
             txtTelefono.KeyPress += txtTelefono_KeyPress;
             // 
@@ -412,9 +390,9 @@
             DatosLaborales.Controls.Add(label14);
             DatosLaborales.Controls.Add(label13);
             DatosLaborales.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            DatosLaborales.Location = new Point(973, 72);
+            DatosLaborales.Location = new Point(778, 72);
             DatosLaborales.Name = "DatosLaborales";
-            DatosLaborales.Size = new Size(441, 320);
+            DatosLaborales.Size = new Size(342, 320);
             DatosLaborales.TabIndex = 4;
             DatosLaborales.TabStop = false;
             DatosLaborales.Text = "DATOS LABORALES";
@@ -522,9 +500,9 @@
             OtrosDatos.Controls.Add(label19);
             OtrosDatos.Controls.Add(label18);
             OtrosDatos.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            OtrosDatos.Location = new Point(1429, 72);
+            OtrosDatos.Location = new Point(1138, 72);
             OtrosDatos.Name = "OtrosDatos";
-            OtrosDatos.Size = new Size(224, 320);
+            OtrosDatos.Size = new Size(217, 320);
             OtrosDatos.TabIndex = 5;
             OtrosDatos.TabStop = false;
             OtrosDatos.Text = "OTROS DATOS";
@@ -533,17 +511,17 @@
             // 
             cboEstadoEmpleado.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
             cboEstadoEmpleado.FormattingEnabled = true;
-            cboEstadoEmpleado.Location = new Point(-1, 135);
+            cboEstadoEmpleado.Location = new Point(28, 161);
             cboEstadoEmpleado.Name = "cboEstadoEmpleado";
-            cboEstadoEmpleado.Size = new Size(196, 27);
+            cboEstadoEmpleado.Size = new Size(151, 27);
             cboEstadoEmpleado.TabIndex = 3;
             // 
             // txtSalarioBase
             // 
             txtSalarioBase.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
-            txtSalarioBase.Location = new Point(1, 73);
+            txtSalarioBase.Location = new Point(28, 85);
             txtSalarioBase.Name = "txtSalarioBase";
-            txtSalarioBase.Size = new Size(194, 26);
+            txtSalarioBase.Size = new Size(144, 26);
             txtSalarioBase.TabIndex = 2;
             txtSalarioBase.KeyPress += txtSalarioBase_KeyPress;
             // 
@@ -551,7 +529,7 @@
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
-            label19.Location = new Point(-1, 111);
+            label19.Location = new Point(0, 130);
             label19.Name = "label19";
             label19.Size = new Size(207, 19);
             label19.TabIndex = 1;
@@ -561,7 +539,7 @@
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
-            label18.Location = new Point(0, 51);
+            label18.Location = new Point(28, 51);
             label18.Name = "label18";
             label18.Size = new Size(129, 19);
             label18.TabIndex = 0;
@@ -572,7 +550,7 @@
             btnAgregarEmpleado.BackColor = Color.Red;
             btnAgregarEmpleado.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregarEmpleado.ForeColor = Color.White;
-            btnAgregarEmpleado.Location = new Point(2382, 72);
+            btnAgregarEmpleado.Location = new Point(1866, 94);
             btnAgregarEmpleado.Name = "btnAgregarEmpleado";
             btnAgregarEmpleado.Size = new Size(170, 46);
             btnAgregarEmpleado.TabIndex = 6;
@@ -585,9 +563,9 @@
             btnSalir.BackColor = Color.Red;
             btnSalir.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
             btnSalir.ForeColor = Color.White;
-            btnSalir.Location = new Point(2382, 154);
+            btnSalir.Location = new Point(1866, 157);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(159, 46);
+            btnSalir.Size = new Size(170, 46);
             btnSalir.TabIndex = 8;
             btnSalir.Text = "SALIR";
             btnSalir.UseVisualStyleBackColor = false;
@@ -597,9 +575,9 @@
             btnExportar.BackColor = Color.Red;
             btnExportar.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
             btnExportar.ForeColor = Color.White;
-            btnExportar.Location = new Point(2382, 234);
+            btnExportar.Location = new Point(1866, 228);
             btnExportar.Name = "btnExportar";
-            btnExportar.Size = new Size(159, 46);
+            btnExportar.Size = new Size(170, 46);
             btnExportar.TabIndex = 9;
             btnExportar.Text = "EXPORTAR";
             btnExportar.UseVisualStyleBackColor = false;
@@ -615,9 +593,9 @@
             Ingresos.Controls.Add(label22);
             Ingresos.Controls.Add(label23);
             Ingresos.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            Ingresos.Location = new Point(1670, 72);
+            Ingresos.Location = new Point(1376, 72);
             Ingresos.Name = "Ingresos";
-            Ingresos.Size = new Size(202, 320);
+            Ingresos.Size = new Size(188, 320);
             Ingresos.TabIndex = 10;
             Ingresos.TabStop = false;
             Ingresos.Text = "INGRESOS";
@@ -636,7 +614,7 @@
             // 
             label21.AutoSize = true;
             label21.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
-            label21.Location = new Point(43, 176);
+            label21.Location = new Point(40, 177);
             label21.Name = "label21";
             label21.Size = new Size(98, 18);
             label21.TabIndex = 5;
@@ -663,7 +641,7 @@
             // txtHorasExtras
             // 
             txtHorasExtras.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
-            txtHorasExtras.Location = new Point(9, 87);
+            txtHorasExtras.Location = new Point(23, 87);
             txtHorasExtras.Name = "txtHorasExtras";
             txtHorasExtras.Size = new Size(138, 26);
             txtHorasExtras.TabIndex = 2;
@@ -683,7 +661,7 @@
             // 
             label23.AutoSize = true;
             label23.Font = new Font("Arial", 6F, FontStyle.Bold, GraphicsUnit.Point);
-            label23.Location = new Point(9, 57);
+            label23.Location = new Point(23, 56);
             label23.Name = "label23";
             label23.Size = new Size(137, 19);
             label23.TabIndex = 0;
@@ -697,9 +675,9 @@
             Deducciones.Controls.Add(txtMontoOtrasDeducciones);
             Deducciones.Controls.Add(label26);
             Deducciones.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            Deducciones.Location = new Point(1878, 72);
+            Deducciones.Location = new Point(1592, 72);
             Deducciones.Name = "Deducciones";
-            Deducciones.Size = new Size(241, 320);
+            Deducciones.Size = new Size(231, 320);
             Deducciones.TabIndex = 11;
             Deducciones.TabStop = false;
             Deducciones.Text = "DEDUCIONES";
@@ -754,78 +732,96 @@
             // 
             // dgvDatosEmpleado
             // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvDatosEmpleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvDatosEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDatosEmpleado.Columns.AddRange(new DataGridViewColumn[] { NumeroEmpleado, Cedula, NoInss, NoRuc, PNombre, SNombre, PApellido, SApellido, Nacimiento, Sexo, EstadoCivil, Dirección, Teléfono, Celular, InicioContrato, CierreContrato, SalarioBase, Estado });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvDatosEmpleado.DefaultCellStyle = dataGridViewCellStyle3;
-            dgvDatosEmpleado.Location = new Point(1, 398);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvDatosEmpleado.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvDatosEmpleado.Location = new Point(16, 441);
             dgvDatosEmpleado.Name = "dgvDatosEmpleado";
             dgvDatosEmpleado.RowHeadersWidth = 82;
             dgvDatosEmpleado.RowTemplate.Height = 41;
-            dgvDatosEmpleado.Size = new Size(2564, 300);
+            dgvDatosEmpleado.Size = new Size(2067, 265);
             dgvDatosEmpleado.TabIndex = 12;
+            // 
+            // btnPlanilla
+            // 
+            btnPlanilla.Location = new Point(1866, 309);
+            btnPlanilla.Name = "btnPlanilla";
+            btnPlanilla.Size = new Size(201, 46);
+            btnPlanilla.TabIndex = 15;
+            btnPlanilla.Text = "Calcular Planilla";
+            btnPlanilla.UseVisualStyleBackColor = true;
+            btnPlanilla.Click += btnPlanilla_Click;
             // 
             // NumeroEmpleado
             // 
             NumeroEmpleado.HeaderText = "Numero Empleado";
             NumeroEmpleado.MinimumWidth = 10;
             NumeroEmpleado.Name = "NumeroEmpleado";
-            NumeroEmpleado.Width = 120;
+            NumeroEmpleado.Width = 110;
             // 
             // Cedula
             // 
             Cedula.HeaderText = "No.Cedula";
             Cedula.MinimumWidth = 10;
             Cedula.Name = "Cedula";
-            Cedula.Width = 170;
+            Cedula.Width = 110;
             // 
             // NoInss
             // 
             NoInss.HeaderText = "No.Inss";
             NoInss.MinimumWidth = 10;
             NoInss.Name = "NoInss";
-            NoInss.Width = 120;
+            NoInss.Width = 110;
             // 
             // NoRuc
             // 
             NoRuc.HeaderText = "No.Ruc";
             NoRuc.MinimumWidth = 10;
             NoRuc.Name = "NoRuc";
-            NoRuc.Width = 120;
+            NoRuc.Width = 110;
             // 
             // PNombre
             // 
             PNombre.HeaderText = "Primer Nombre";
             PNombre.MinimumWidth = 10;
             PNombre.Name = "PNombre";
-            PNombre.Width = 160;
+            PNombre.Width = 120;
             // 
             // SNombre
             // 
             SNombre.HeaderText = "Segundo Nombre";
             SNombre.MinimumWidth = 10;
             SNombre.Name = "SNombre";
-            SNombre.Width = 160;
+            SNombre.Width = 120;
             // 
             // PApellido
             // 
             PApellido.HeaderText = "Primer Apellido";
             PApellido.MinimumWidth = 10;
             PApellido.Name = "PApellido";
-            PApellido.Width = 160;
+            PApellido.Width = 120;
             // 
             // SApellido
             // 
             SApellido.HeaderText = "Segundo Apellido";
             SApellido.MinimumWidth = 10;
             SApellido.Name = "SApellido";
-            SApellido.Width = 160;
+            SApellido.Width = 120;
             // 
             // Nacimiento
             // 
@@ -839,35 +835,35 @@
             Sexo.HeaderText = "Sexo";
             Sexo.MinimumWidth = 10;
             Sexo.Name = "Sexo";
-            Sexo.Width = 90;
+            Sexo.Width = 50;
             // 
             // EstadoCivil
             // 
             EstadoCivil.HeaderText = "Estado Civil";
             EstadoCivil.MinimumWidth = 10;
             EstadoCivil.Name = "EstadoCivil";
-            EstadoCivil.Width = 130;
+            EstadoCivil.Width = 90;
             // 
             // Dirección
             // 
             Dirección.HeaderText = "Dirección";
             Dirección.MinimumWidth = 10;
             Dirección.Name = "Dirección";
-            Dirección.Width = 200;
+            Dirección.Width = 160;
             // 
             // Teléfono
             // 
             Teléfono.HeaderText = "Teléfono";
             Teléfono.MinimumWidth = 10;
             Teléfono.Name = "Teléfono";
-            Teléfono.Width = 130;
+            Teléfono.Width = 90;
             // 
             // Celular
             // 
             Celular.HeaderText = "Celular";
             Celular.MinimumWidth = 10;
             Celular.Name = "Celular";
-            Celular.Width = 130;
+            Celular.Width = 90;
             // 
             // InicioContrato
             // 
@@ -888,196 +884,21 @@
             SalarioBase.HeaderText = "Salario Base";
             SalarioBase.MinimumWidth = 10;
             SalarioBase.Name = "SalarioBase";
-            SalarioBase.Width = 160;
+            SalarioBase.Width = 120;
             // 
             // Estado
             // 
             Estado.HeaderText = "Estado";
             Estado.MinimumWidth = 10;
             Estado.Name = "Estado";
-            Estado.Width = 120;
-            // 
-            // dgvNomina
-            // 
-            dgvNomina.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNomina.Columns.AddRange(new DataGridViewColumn[] { NoEmpleado2, PNombre2, sNombre2, pApellido2, SApellido2, SalarioBase2, Antiguedad, RiesgoLaboral, Nocturnidad, ConceptoOI, MontoOI, HorasExtras, TotalIngresos, Inss, IR, ConceptoOD, MontoOD, Deducciones2, SalarioNeto });
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvNomina.DefaultCellStyle = dataGridViewCellStyle4;
-            dgvNomina.Location = new Point(1, 842);
-            dgvNomina.Name = "dgvNomina";
-            dgvNomina.RowHeadersWidth = 82;
-            dgvNomina.RowTemplate.Height = 41;
-            dgvNomina.Size = new Size(2564, 300);
-            dgvNomina.TabIndex = 13;
-            // 
-            // NoEmpleado2
-            // 
-            NoEmpleado2.HeaderText = "Numero Empleado";
-            NoEmpleado2.MinimumWidth = 10;
-            NoEmpleado2.Name = "NoEmpleado2";
-            NoEmpleado2.Width = 120;
-            // 
-            // PNombre2
-            // 
-            PNombre2.HeaderText = "Primer Nombre";
-            PNombre2.MinimumWidth = 10;
-            PNombre2.Name = "PNombre2";
-            PNombre2.Width = 150;
-            // 
-            // sNombre2
-            // 
-            sNombre2.HeaderText = "Segundo Nombre";
-            sNombre2.MinimumWidth = 10;
-            sNombre2.Name = "sNombre2";
-            sNombre2.Width = 150;
-            // 
-            // pApellido2
-            // 
-            pApellido2.HeaderText = "Primer Apellido";
-            pApellido2.MinimumWidth = 10;
-            pApellido2.Name = "pApellido2";
-            pApellido2.Width = 150;
-            // 
-            // SApellido2
-            // 
-            SApellido2.HeaderText = "Segundo Apellido";
-            SApellido2.MinimumWidth = 10;
-            SApellido2.Name = "SApellido2";
-            SApellido2.Width = 150;
-            // 
-            // SalarioBase2
-            // 
-            SalarioBase2.HeaderText = "Salario Base";
-            SalarioBase2.MinimumWidth = 10;
-            SalarioBase2.Name = "SalarioBase2";
-            SalarioBase2.Width = 140;
-            // 
-            // Antiguedad
-            // 
-            Antiguedad.HeaderText = "Antiguedad";
-            Antiguedad.MinimumWidth = 10;
-            Antiguedad.Name = "Antiguedad";
-            Antiguedad.Width = 120;
-            // 
-            // RiesgoLaboral
-            // 
-            RiesgoLaboral.HeaderText = "Riesgo Laboral";
-            RiesgoLaboral.MinimumWidth = 10;
-            RiesgoLaboral.Name = "RiesgoLaboral";
-            RiesgoLaboral.Width = 120;
-            // 
-            // Nocturnidad
-            // 
-            Nocturnidad.HeaderText = "Nocturnidad";
-            Nocturnidad.MinimumWidth = 10;
-            Nocturnidad.Name = "Nocturnidad";
-            Nocturnidad.Width = 120;
-            // 
-            // ConceptoOI
-            // 
-            ConceptoOI.HeaderText = "Concepto O.I";
-            ConceptoOI.MinimumWidth = 10;
-            ConceptoOI.Name = "ConceptoOI";
-            ConceptoOI.Width = 140;
-            // 
-            // MontoOI
-            // 
-            MontoOI.HeaderText = "Monto O.I";
-            MontoOI.MinimumWidth = 10;
-            MontoOI.Name = "MontoOI";
-            MontoOI.Width = 120;
-            // 
-            // HorasExtras
-            // 
-            HorasExtras.HeaderText = "Horas Extras";
-            HorasExtras.MinimumWidth = 10;
-            HorasExtras.Name = "HorasExtras";
-            HorasExtras.Width = 120;
-            // 
-            // TotalIngresos
-            // 
-            TotalIngresos.HeaderText = "Total Ingresos";
-            TotalIngresos.MinimumWidth = 10;
-            TotalIngresos.Name = "TotalIngresos";
-            TotalIngresos.Width = 130;
-            // 
-            // Inss
-            // 
-            Inss.HeaderText = "Inss";
-            Inss.MinimumWidth = 10;
-            Inss.Name = "Inss";
-            Inss.Width = 120;
-            // 
-            // IR
-            // 
-            IR.HeaderText = "IR";
-            IR.MinimumWidth = 10;
-            IR.Name = "IR";
-            IR.Width = 120;
-            // 
-            // ConceptoOD
-            // 
-            ConceptoOD.HeaderText = "Concepto O.D";
-            ConceptoOD.MinimumWidth = 10;
-            ConceptoOD.Name = "ConceptoOD";
-            ConceptoOD.Width = 140;
-            // 
-            // MontoOD
-            // 
-            MontoOD.HeaderText = "Monto O.D";
-            MontoOD.MinimumWidth = 10;
-            MontoOD.Name = "MontoOD";
-            MontoOD.Width = 120;
-            // 
-            // Deducciones2
-            // 
-            Deducciones2.HeaderText = "Total Deducciones";
-            Deducciones2.MinimumWidth = 10;
-            Deducciones2.Name = "Deducciones2";
-            Deducciones2.Width = 130;
-            // 
-            // SalarioNeto
-            // 
-            SalarioNeto.HeaderText = "Salario Neto";
-            SalarioNeto.MinimumWidth = 10;
-            SalarioNeto.Name = "SalarioNeto";
-            SalarioNeto.Width = 130;
-            // 
-            // cboTipoPlanilla
-            // 
-            cboTipoPlanilla.FormattingEnabled = true;
-            cboTipoPlanilla.Location = new Point(2135, 196);
-            cboTipoPlanilla.Name = "cboTipoPlanilla";
-            cboTipoPlanilla.Size = new Size(205, 40);
-            cboTipoPlanilla.TabIndex = 14;
-            cboTipoPlanilla.Text = "Seleccione";
-            cboTipoPlanilla.SelectedIndexChanged += cboTipoPlanilla_SelectedIndexChanged;
-            // 
-            // btnBorrar
-            // 
-            btnBorrar.Location = new Point(2331, 309);
-            btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(210, 46);
-            btnBorrar.TabIndex = 15;
-            btnBorrar.Text = "Borrar Empleado";
-            btnBorrar.UseVisualStyleBackColor = true;
-            btnBorrar.Click += btnBorrar_Click;
             // 
             // frmEmpleados
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.CornflowerBlue;
-            ClientSize = new Size(2564, 1354);
-            Controls.Add(btnBorrar);
-            Controls.Add(cboTipoPlanilla);
-            Controls.Add(dgvNomina);
+            ClientSize = new Size(2113, 807);
+            Controls.Add(btnPlanilla);
             Controls.Add(dgvDatosEmpleado);
             Controls.Add(Deducciones);
             Controls.Add(Ingresos);
@@ -1106,7 +927,6 @@
             Deducciones.ResumeLayout(false);
             Deducciones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDatosEmpleado).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvNomina).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1172,6 +992,7 @@
         private TextBox txtMontoOtrasDeducciones;
         private Label label26;
         private DataGridView dgvDatosEmpleado;
+        private Button btnPlanilla;
         private DataGridViewTextBoxColumn NumeroEmpleado;
         private DataGridViewTextBoxColumn Cedula;
         private DataGridViewTextBoxColumn NoInss;
@@ -1190,27 +1011,5 @@
         private DataGridViewTextBoxColumn CierreContrato;
         private DataGridViewTextBoxColumn SalarioBase;
         private DataGridViewTextBoxColumn Estado;
-        private DataGridView dgvNomina;
-        private DataGridViewTextBoxColumn NoEmpleado2;
-        private DataGridViewTextBoxColumn PNombre2;
-        private DataGridViewTextBoxColumn sNombre2;
-        private DataGridViewTextBoxColumn pApellido2;
-        private DataGridViewTextBoxColumn SApellido2;
-        private DataGridViewTextBoxColumn SalarioBase2;
-        private DataGridViewTextBoxColumn Antiguedad;
-        private DataGridViewTextBoxColumn RiesgoLaboral;
-        private DataGridViewTextBoxColumn Nocturnidad;
-        private DataGridViewTextBoxColumn ConceptoOI;
-        private DataGridViewTextBoxColumn MontoOI;
-        private DataGridViewTextBoxColumn HorasExtras;
-        private DataGridViewTextBoxColumn TotalIngresos;
-        private DataGridViewTextBoxColumn Inss;
-        private DataGridViewTextBoxColumn IR;
-        private DataGridViewTextBoxColumn ConceptoOD;
-        private DataGridViewTextBoxColumn MontoOD;
-        private DataGridViewTextBoxColumn Deducciones2;
-        private DataGridViewTextBoxColumn SalarioNeto;
-        private ComboBox cboTipoPlanilla;
-        private Button btnBorrar;
     }
 }

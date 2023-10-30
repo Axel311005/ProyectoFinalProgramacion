@@ -13,7 +13,7 @@ namespace Nomina
             cboEstadoCivil.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEstadoEmpleado.DropDownStyle = ComboBoxStyle.DropDownList;
             cboSexo.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboTipoPlanilla.DropDownStyle = ComboBoxStyle.DropDownList;
+
 
 
         }
@@ -24,18 +24,10 @@ namespace Nomina
         string[] sexos = { "M", "F" };
         string[] EstadoCivil2 = { "Soltero", "Casado" };
         string[] estado2 = { "Activo", "No Activo" };
-        string[] TipoPlanilla = { "Mensual", "Quincenal" };
+
 
         Nómina nomina = new Nómina();
         NominaQuincenal quincenal = new NominaQuincenal();
-
-        private void btnCalcularNomina_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
 
 
         public void EnviarObjetos()
@@ -77,8 +69,6 @@ namespace Nomina
             cboEstadoEmpleado.DataSource = estado2;
             cboSexo.DataSource = sexos;
             dgvDatosEmpleado.RowTemplate.Height = 20;
-            dgvNomina.RowTemplate.Height = 20;
-            cboTipoPlanilla.DataSource = TipoPlanilla;
             CrearCargarFicheroDatosEmpleados();
 
 
@@ -86,75 +76,37 @@ namespace Nomina
 
         private void btnAgregarEmpleado_Click(object sender, EventArgs e)
         {
-            EnviarObjetos();
-            GrabarDatosEmpleados();
-            
-
-            if (cboTipoPlanilla.SelectedItem == "Mensual")
-            {
-                Agregar();
-            }
-            if (cboTipoPlanilla.SelectedItem == "Quincenal")
-            {
-                AgregarQuincenalmente();
-            }
+            Agregar();
 
 
 
         }
 
 
+
+        public void Agregar()
+        {
+            if (Validar() == "")
+            {
+                EnviarObjetos();
+                GrabarDatosEmpleados();
+                GrabarDatosNominaMensual();
+                GrabarDatosNominaQuincenal();
+                AgregarDataEmpleado();
+
+            }
+        }
         public void AgregarDataEmpleado()
         {
             dgvDatosEmpleado.Rows.Add(txtNoEmpleado.Text, txtCedula.Text, txtInss.Text, txtRuc.Text,
-                    txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text,
-                    txtSegundoApellido.Text, FechaNacimiento.Text, cboSexo.Text, cboEstadoCivil.Text,
-                    txtDireccion.Text, txtTelefono.Text, txtCelular.Text, FechaContratacion.Text
-                    , FechaCierreContrato.Text, txtSalarioBase.Text, cboEstadoEmpleado.Text);
-        }
+                   txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text,
+                   txtSegundoApellido.Text, FechaNacimiento.Text, cboSexo.Text, cboEstadoCivil.Text,
+                   txtDireccion.Text, txtTelefono.Text, txtCelular.Text, FechaContratacion.Text
+                   , FechaCierreContrato.Text, txtSalarioBase.Text, cboEstadoEmpleado.Text);
 
-        private void AgregarQuincenalmente()
-        {
-            if (Validar() == "")
-            {
-
-                AgregarDataEmpleado();
-                dgvNomina.Rows.Add(txtNoEmpleado.Text, txtPrimerNombre.Text,
-                    txtSegundoNombre.Text, txtPrimerApellido.Text,
-                    txtSegundoApellido.Text, quincenal.SalarioQuincenal().ToString("0.00"),
-                    quincenal.CalcularAntiguedad().ToString("0.00"), quincenal.CalcularRiesgoLaboral().ToString("0.00"),
-                    quincenal.CalcularNorturnidad().ToString("0.00"), txtConceptoOtrosIngresos.Text,
-                    txtMontoOtrosIngresos.Text, quincenal.CalcularPagoHorasExtras().ToString("0.00"), quincenal.TotalIngresos().ToString("0.00"),
-                    quincenal.CalcularInss().ToString("0.00"), quincenal.CalcularIR().ToString("0.00"),
-                    txtConceptoOtrasDeducciones.Text, txtMontoOtrasDeducciones.Text, quincenal.TotalDeducciones().ToString("0.00"),
-                    quincenal.SalarioNeto().ToString("0.00"));
-            }
         }
 
 
-
-        private void Agregar()
-        {
-            if (Validar() == "")
-            {
-
-                AgregarDataEmpleado();
-
-
-                dgvNomina.Rows.Add(txtNoEmpleado.Text, txtPrimerNombre.Text,
-                    txtSegundoNombre.Text, txtPrimerApellido.Text,
-                    txtSegundoApellido.Text, txtSalarioBase.Text,
-                    nomina.CalcularAntiguedad().ToString("0.00"), nomina.CalcularRiesgoLaboral().ToString("0.00"),
-                    nomina.CalcularNorturnidad().ToString("0.00"), txtConceptoOtrosIngresos.Text,
-                    txtMontoOtrosIngresos.Text, nomina.CalcularPagoHorasExtras().ToString("0.00"), nomina.TotalIngresos().ToString("0.00"),
-                    nomina.CalcularInss().ToString("0.00"), nomina.CalcularIR().ToString("0.00"),
-                    txtConceptoOtrasDeducciones.Text, txtMontoOtrasDeducciones.Text, nomina.TotalDeducciones().ToString("0.00"),
-                    nomina.SalarioNeto().ToString("0.00"));
-
-                    
-
-            }
-        }
 
         private string Validar()
         {
@@ -239,77 +191,31 @@ namespace Nomina
         }
 
 
-        private void GrabarBorradoEmpleados()
+        private void GrabarDatosNominaMensual()
         {
-            try
-            {
-                StreamWriter archivo = new StreamWriter("empleados.txt");
+            StreamWriter archivo = new StreamWriter("NominaMensual.txt", true);
 
-                for (int i = 0; i < dgvDatosEmpleado.Rows.Count; i++)
-                {
-                    string aux1 = dgvDatosEmpleado.Rows[i].Cells[0].Value?.ToString();
-                    string aux2 = dgvDatosEmpleado.Rows[i].Cells[1].Value?.ToString();
-                    string aux3 = dgvDatosEmpleado.Rows[i].Cells[2].Value?.ToString();
-                    string aux4 = dgvDatosEmpleado.Rows[i].Cells[3].Value?.ToString();
-                    string aux5 = dgvDatosEmpleado.Rows[i].Cells[4].Value?.ToString();
-                    string aux6 = dgvDatosEmpleado.Rows[i].Cells[5].Value?.ToString();
-                    string aux7 = dgvDatosEmpleado.Rows[i].Cells[6].Value?.ToString();
-                    string aux8 = dgvDatosEmpleado.Rows[i].Cells[7].Value?.ToString();
-                    string aux9 = dgvDatosEmpleado.Rows[i].Cells[8].Value?.ToString();
-                    string aux10 = dgvDatosEmpleado.Rows[i].Cells[9].Value?.ToString();
-                    string aux11 = dgvDatosEmpleado.Rows[i].Cells[10].Value?.ToString();
-                    string aux12 = dgvDatosEmpleado.Rows[i].Cells[11].Value?.ToString();
-                    string aux13 = dgvDatosEmpleado.Rows[i].Cells[12].Value?.ToString();
-                    string aux14 = dgvDatosEmpleado.Rows[i].Cells[13].Value?.ToString();
-                    string aux15 = dgvDatosEmpleado.Rows[i].Cells[14].Value?.ToString();
-                    string aux16 = dgvDatosEmpleado.Rows[i].Cells[15].Value?.ToString();
-                    string aux17 = dgvDatosEmpleado.Rows[i].Cells[16].Value?.ToString();
-                    string aux18 = dgvDatosEmpleado.Rows[i].Cells[17].Value?.ToString();
+            string datos = $"{txtNoEmpleado.Text},{txtPrimerNombre.Text},{txtSegundoNombre.Text}," +
+                $"{txtPrimerApellido.Text},{txtSegundoApellido.Text},{nomina.SalarioBase},{nomina.CalcularAntiguedad().ToString("0.00")},{nomina.CalcularRiesgoLaboral().ToString("0.00")},{nomina.CalcularNorturnidad().ToString("0.00")}" +
+                $",{txtConceptoOtrosIngresos.Text},{nomina.OtrosIngresos},{nomina.CalcularPagoHorasExtras().ToString("0.00")},{nomina.TotalIngresos().ToString("0.00")},{nomina.CalcularInss().ToString("0.00")},{nomina.CalcularIR().ToString("0.00")},{txtConceptoOtrasDeducciones.Text}" +
+                $",{nomina.OtrasDeducciones},{nomina.TotalDeducciones().ToString("0.00")},{nomina.SalarioNeto().ToString("0.00")}";
 
-                    if (!string.IsNullOrEmpty(aux1) && !string.IsNullOrEmpty(aux2) && !string.IsNullOrEmpty(aux3) && !string.IsNullOrEmpty(aux4)
-                        && !string.IsNullOrEmpty(aux5) && !string.IsNullOrEmpty(aux6) && !string.IsNullOrEmpty(aux7) && !string.IsNullOrEmpty(aux8)
-                        && !string.IsNullOrEmpty(aux9) && !string.IsNullOrEmpty(aux10) && !string.IsNullOrEmpty(aux11) && !string.IsNullOrEmpty(aux12)
-                        && !string.IsNullOrEmpty(aux13) && !string.IsNullOrEmpty(aux14) && !string.IsNullOrEmpty(aux15) && !string.IsNullOrEmpty(aux16)
-                        && !string.IsNullOrEmpty(aux17) && !string.IsNullOrEmpty(aux18))
-                    {
-                        string linea = $"{aux1},{aux2},{aux3},{aux4},{aux5},{aux6},{aux7},{aux8},{aux9},{aux10},{aux11},{aux12},{aux13},{aux14},{aux15},{aux16},{aux17},{aux18}";
-                        archivo.WriteLine(linea);
-                    }
-
-                    
-                }
-                archivo.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al guardar en el archivo: " + ex.Message);
-            }
+            archivo.WriteLine(datos);
+            archivo.Close();
         }
 
-        private void btnBorrar_Click(object sender, EventArgs e)
+        private void GrabarDatosNominaQuincenal()
         {
-            if (dgvDatosEmpleado.CurrentRow.Index != -1)
-            {
-                dgvDatosEmpleado.Rows.RemoveAt(this.dgvDatosEmpleado.CurrentRow.Index);
-                MessageBox.Show("Se borro a la persona");
-                GrabarBorradoEmpleados();
-            }
+            StreamWriter archivo = new StreamWriter("NominaQuincenal.txt", true);
+
+            string datos = $"{txtNoEmpleado.Text},{txtPrimerNombre.Text},{txtSegundoNombre.Text}," +
+                $"{txtPrimerApellido.Text},{txtSegundoApellido.Text},{quincenal.SalarioQuincenal().ToString("0.00")},{quincenal.CalcularAntiguedad().ToString("0.00")},{quincenal.CalcularRiesgoLaboral().ToString("0.00")},{quincenal.CalcularNorturnidad().ToString("0.00")}" +
+                $",{txtConceptoOtrosIngresos.Text},{quincenal.OtrosIngresos},{quincenal.CalcularPagoHorasExtras().ToString("0.00")},{quincenal.TotalIngresos().ToString("0.00")},{quincenal.CalcularInss().ToString("0.00")},{quincenal.CalcularIR().ToString("0.00")},{txtConceptoOtrasDeducciones.Text}" +
+                $",{quincenal.OtrasDeducciones},{quincenal.TotalDeducciones().ToString("0.00")},{quincenal.SalarioNeto().ToString("0.00")}";
+
+            archivo.WriteLine(datos);
+            archivo.Close();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -540,72 +446,16 @@ namespace Nomina
 
 
 
-
-        private void cboTipoPlanilla_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void ExportarDataGridViewsAExcel(DataGridView dataGridView1, DataGridView dataGridView2)
-        {
-            // Crear un cuadro de diálogo para guardar el archivo Excel
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Archivos de Excel (*.xlsx)|*.xlsx";
-            saveFileDialog.Title = "Guardar archivo de Excel";
-            saveFileDialog.FileName = "MiArchivo.xlsx"; // Nombre predeterminado del archivo
-
-
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string rutaArchivo = saveFileDialog.FileName;
-
-                Excel.Application excelApp = new Excel.Application();
-                Excel.Workbook workbook = excelApp.Workbooks.Add();
-
-                ExportarDataGridViewAExcel(dataGridView1, workbook, "Hoja1");
-                ExportarDataGridViewAExcel(dataGridView2, workbook, "Hoja2");
-
-                // Guardar el archivo de Excel en la ubicación seleccionada por el usuario
-                workbook.SaveAs(rutaArchivo);
-                workbook.Close();
-                excelApp.Quit();
-
-                // Liberar los recursos
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(workbook);
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
-            }
-        }
-
-        private void ExportarDataGridViewAExcel(DataGridView dataGridView, Excel.Workbook workbook, string nombreHoja)
-        {
-            Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets.Add();
-
-
-
-            // Copiar los encabezados de las columnas
-            for (int i = 1; i <= dataGridView.Columns.Count; i++)
-            {
-                worksheet.Cells[1, i] = dataGridView.Columns[i - 1].HeaderText;
-            }
-
-            // Copiar los datos del DataGridView
-            for (int i = 0; i < dataGridView.Rows.Count; i++)
-            {
-                for (int j = 0; j < dataGridView.Columns.Count; j++)
-                {
-                    worksheet.Cells[i + 2, j + 1] = dataGridView.Rows[i].Cells[j].Value;
-                }
-            }
-        }
-
-
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            ExportarDataGridViewsAExcel(dgvDatosEmpleado, dgvNomina);
+            ExportarExcel excel = new ExportarExcel();
+            excel.ExportarAExcel(dgvDatosEmpleado);
         }
 
-        
+        private void btnPlanilla_Click(object sender, EventArgs e)
+        {
+            frmTipoPlanilla tipo = new frmTipoPlanilla();
+            tipo.ShowDialog();
+        }
     }
 }
