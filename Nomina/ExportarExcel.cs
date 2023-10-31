@@ -9,8 +9,6 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Modelo
 {
-    
-
     public class ExportarExcel
     {
         public void ExportarAExcel(DataGridView dataGridView)
@@ -55,7 +53,7 @@ namespace Modelo
                     worksheet.Cells[i + 2, j + 1] = dataGridView.Rows[i].Cells[j].Value;
                 }
             }
-        }
-    }
 
+        }
+    } 
 }

@@ -1,4 +1,5 @@
 using Modelo;
+using System.Reflection.Metadata.Ecma335;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -77,16 +78,16 @@ namespace Nomina
         private void btnAgregarEmpleado_Click(object sender, EventArgs e)
         {
             Agregar();
-
-
-
+           
         }
 
 
 
         public void Agregar()
         {
-            if (Validar() == "")
+            if (Validar(txtPrimerNombre, txtSegundoNombre, txtPrimerApellido, txtSegundoApellido, txtCedula, txtDireccion,
+               txtTelefono, txtCelular, txtNoEmpleado, txtInss, txtRuc, txtSalarioBase, txtHorasExtras,
+               txtConceptoOtrosIngresos, txtMontoOtrosIngresos, txtConceptoOtrasDeducciones, txtMontoOtrasDeducciones))
             {
                 EnviarObjetos();
                 GrabarDatosEmpleados();
@@ -95,6 +96,7 @@ namespace Nomina
                 AgregarDataEmpleado();
 
             }
+           
         }
         public void AgregarDataEmpleado()
         {
@@ -108,10 +110,23 @@ namespace Nomina
 
 
 
-        private string Validar()
+        private bool Validar(params TextBox[] textBoxes)
         {
-            return "";
+            foreach (TextBox textBox in textBoxes)
+            {
+                string texto = textBox.Text.Trim();
+                if (string.IsNullOrEmpty(texto))
+                {
+                    MessageBox.Show("Ninguno de los TextBox puede estar vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+            // Si todos los TextBox contienen datos, la validación es exitosa
+            return true;
         }
+
+
 
         private void FechaContratacion_ValueChanged(object sender, EventArgs e)
         {
@@ -411,37 +426,37 @@ namespace Nomina
 
         private void txtRuc_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if (e.KeyChar == (char)Keys.Back)
-            //{
-            //    e.Handled = false;
-            //    return;
-            //}
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+                return;
+            }
 
-            //if (txtRuc.Text.Length >= 14)
-            //{
-            //    e.Handled = true;
-            //    return;
-            //}
+            if (txtRuc.Text.Length >= 14)
+            {
+                e.Handled = true;
+                return;
+            }
 
-            //if (txtRuc.Text.Length == 0)
-            //{
-            //    if (char.IsLetter(e.KeyChar) && char.IsUpper(e.KeyChar))
-            //    {
-            //        e.Handled = false;
-            //    }
-            //    else
-            //    {
-            //        e.Handled = true;
-            //    }
-            //}
-            //else if (char.IsDigit(e.KeyChar))
-            //{
-            //    e.Handled = false;
-            //}
-            //else
-            //{
-            //    e.Handled = true;
-            //}
+            if (txtRuc.Text.Length == 0)
+            {
+                if (char.IsLetter(e.KeyChar) && char.IsUpper(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            else if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
 
 
