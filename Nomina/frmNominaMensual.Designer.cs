@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             dgvNomina = new DataGridView();
-            btnExportar = new Button();
             NoEmpleado2 = new DataGridViewTextBoxColumn();
             PNombre2 = new DataGridViewTextBoxColumn();
             sNombre2 = new DataGridViewTextBoxColumn();
@@ -51,45 +50,38 @@
             MontoOD = new DataGridViewTextBoxColumn();
             Deducciones2 = new DataGridViewTextBoxColumn();
             SalarioNeto = new DataGridViewTextBoxColumn();
+            btnExportar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvNomina).BeginInit();
             SuspendLayout();
             // 
             // dgvNomina
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvNomina.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvNomina.BackgroundColor = SystemColors.Control;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvNomina.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvNomina.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNomina.Columns.AddRange(new DataGridViewColumn[] { NoEmpleado2, PNombre2, sNombre2, pApellido2, SApellido2, SalarioBase2, Antiguedad, RiesgoLaboral, Nocturnidad, ConceptoOI, MontoOI, HorasExtras, TotalIngresos, Inss, IR, ConceptoOD, MontoOD, Deducciones2, SalarioNeto });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvNomina.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvNomina.Location = new Point(12, 207);
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Arial", 6F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvNomina.DefaultCellStyle = dataGridViewCellStyle4;
+            dgvNomina.Location = new Point(19, 37);
+            dgvNomina.Margin = new Padding(2, 1, 2, 1);
             dgvNomina.Name = "dgvNomina";
             dgvNomina.RowHeadersWidth = 82;
             dgvNomina.RowTemplate.Height = 41;
-            dgvNomina.Size = new Size(2058, 321);
+            dgvNomina.Size = new Size(1108, 259);
             dgvNomina.TabIndex = 14;
-            // 
-            // btnExportar
-            // 
-            btnExportar.Location = new Point(782, 591);
-            btnExportar.Name = "btnExportar";
-            btnExportar.Size = new Size(316, 46);
-            btnExportar.TabIndex = 15;
-            btnExportar.Text = "Exportar Nomina a Excel";
-            btnExportar.UseVisualStyleBackColor = true;
-            btnExportar.Click += btnExportar_Click;
             // 
             // NoEmpleado2
             // 
@@ -216,14 +208,29 @@
             SalarioNeto.Name = "SalarioNeto";
             SalarioNeto.Width = 110;
             // 
+            // btnExportar
+            // 
+            btnExportar.Location = new Point(490, 312);
+            btnExportar.Margin = new Padding(2, 1, 2, 1);
+            btnExportar.Name = "btnExportar";
+            btnExportar.Size = new Size(170, 22);
+            btnExportar.TabIndex = 15;
+            btnExportar.Text = "Exportar Nomina a Excel";
+            btnExportar.UseVisualStyleBackColor = true;
+            btnExportar.Click += btnExportar_Click;
+            // 
             // frmNominaMensual
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2113, 807);
+            BackColor = Color.CornflowerBlue;
+            ClientSize = new Size(1138, 378);
             Controls.Add(btnExportar);
             Controls.Add(dgvNomina);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2, 1, 2, 1);
             Name = "frmNominaMensual";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmNominaMensual";
             Load += frmNominaMensual_Load;
             ((System.ComponentModel.ISupportInitialize)dgvNomina).EndInit();
