@@ -3,117 +3,134 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Excel = Microsoft.Office.Interop.Excel;
+using System;
+
+
+
+
 
 namespace Modelo
 {
-    public class NominaQuincenal: NominaMensual
+    public class NominaMensual
     {
-        //public double SalarioQuincenal()
+
+
+        //Calculo de los Ingresos 
+
+        
+
+        //public virtual double CalcularNorturnidad()
         //{
-        //    return SalarioBase / 2;
-        //}
-        //public override double CalcularNorturnidad()
-        //{
-        //    return (base.CalcularNorturnidad())/2;
+            
+        //    Nocturnidad = SalarioBase * 0.2;
+
+        //    return Nocturnidad;
         //}
 
-        //public override double CalcularRiesgoLaboral()
+        //public virtual double CalcularRiesgoLaboral()
         //{
-        //    return (base.CalcularRiesgoLaboral())/2;
+        //    RiesgoLaboral = SalarioBase * 0.2;
+
+        //    return RiesgoLaboral;
         //}
 
-        //public override double CalcularSalarioPorDia()
+
+        //public virtual double CalcularSalarioPorDia()
         //{
         //    double SalarioxDia = SalarioBase / 30;
         //    return SalarioxDia;
         //}
-        //public override double CalcularSalarioPorHora()
+        //public  virtual double CalcularSalarioPorHora()
         //{
+           
         //    double SalarioxHora = CalcularSalarioPorDia() / 8;
 
         //    return SalarioxHora;
         //}
 
-        //public override double CalcularPagoHorasExtras()
+        //public virtual double CalcularPagoHorasExtras()
         //{
-        //    return base.CalcularPagoHorasExtras();
+        //    if(HorasExtras != 0)
+        //    {
+        //        return CalcularSalarioPorHora() * 2 * HorasExtras;
+        //    }
+        //    else
+        //        return 0;
+            
         //}
 
-        //public override double CalcularAntiguedad()
+        //public virtual double CalcularAntiguedad()
         //{
-
         //    double antiguedad = 0;
 
         //    if (YearsTrabajados >= 1 && YearsTrabajados <= 3)
         //    {
-        //        antiguedad = SalarioBase / 24;
-
+        //        antiguedad = SalarioBase / 12;
         //    }
         //    else if (YearsTrabajados >= 4 && YearsTrabajados <= 6)
         //    {
-        //        antiguedad = (CalcularSalarioPorDia() * 20) / 24;
-
+        //        antiguedad = (CalcularSalarioPorDia() * 20) / 12;
         //    }
 
         //    return antiguedad;
+
         //}
 
-        //public override double TotalIngresos()
+        //public virtual double TotalIngresos()
         //{
-
-        //    double total = SalarioQuincenal() + CalcularRiesgoLaboral() + CalcularNorturnidad()
+        //    double total = SalarioBase +CalcularRiesgoLaboral()+CalcularNorturnidad()
         //        + CalcularPagoHorasExtras() + OtrosIngresos;
 
         //    return total;
-
-           
         //}
 
-        //public override double IngresoAnual()
+        //public virtual double IngresoAnual()
         //{
-        //    return TotalIngresos()*24;
+        //    return TotalIngresos() * 12;
         //}
 
-        //public override double CalcularInss()
+
+        //// Calcular las deducciones 
+
+        //public virtual double CalcularInss()
         //{
-        //    return TotalIngresos() * 0.07;
+        //    return TotalIngresos() *0.07;
         //}
 
-        //public override double CalcularIR()
+        //public virtual double CalcularIR()
         //{
+
+
         //    double anual = IngresoAnual();
         //    double ir = 0;  
 
         //    if (anual > 500000.01)
         //    {
         //        double calculo3 = (anual - 500000) * 0.30;
-        //        ir = (calculo3 + 82500) / 24;
+        //        ir = (calculo3 + 82500) / 12;
         //    }
         //    else if (anual >= 350000.01)
         //    {
         //        double calculo2 = (anual - 350000) * 0.25;
-        //        ir = (calculo2 + 45000) / 24;
+        //        ir = (calculo2 + 45000) / 12;
         //    }
         //    else if (anual >= 200000.01)
         //    {
         //        double calculo1 = (anual - 200000) * 0.2;
-        //        ir = (calculo1 + 15000) / 24;
+        //        ir = (calculo1 + 15000) / 12;
         //    }
         //    else if (anual >= 100000.01)
         //    {
         //        double sobreexceso1 = 100000;
         //        double TotalaDeducir1 = anual - sobreexceso1;
-        //        ir = (TotalaDeducir1 * 0.15) / 24;
-        //    }
-        //    else
-        //    {
-        //        ir = 0; 
+        //        ir = (TotalaDeducir1 * 0.15) / 12;
         //    }
 
         //    return ir;
         //}
 
-        //public override double TotalDeducciones()
+        //public virtual double TotalDeducciones()
         //{
 
         //    double totaldeducciones = CalcularIR() + CalcularInss() + OtrasDeducciones;
@@ -121,9 +138,11 @@ namespace Modelo
         //    return totaldeducciones;
         //}
 
-        //public override double SalarioNeto()
+        //public virtual double SalarioNeto()
         //{
-        //    return TotalIngresos() - TotalDeducciones();
+        //    return TotalIngresos()-TotalDeducciones();
         //}
+
+        
     }
 }

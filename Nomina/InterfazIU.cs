@@ -16,6 +16,7 @@ namespace Nomina
         public InterfazIU()
         {
             InitializeComponent();
+            CenterToScreen();
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -70,19 +71,12 @@ namespace Nomina
                 PanelMid.Controls.Clear();
                 AbrirForm(new frmNominaQuincenal());
             }
-            
 
-           
+
+
         }
 
-        private void BtnMensual_Click(object sender, EventArgs e)
-        {
-            if (PanelMid.Controls.Count > 0)
-            {
-                PanelMid.Controls.Clear();
-                AbrirForm(new frmNominaMensual());
-            }
-        }
+
     }
 
 }
