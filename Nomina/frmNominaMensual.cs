@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Nomina
@@ -82,5 +83,7 @@ namespace Nomina
             ExportarExcel excel = new ExportarExcel();
             excel.ExportarAExcel(dgvNomina);
         }
+
+       
     }
 }
