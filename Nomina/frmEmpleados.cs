@@ -1,7 +1,8 @@
 using Modelo;
+using System.Reflection.Metadata.Ecma335;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-using Modelo;
+
 namespace Nomina
 {
     public partial class frmEmpleados : Form
@@ -13,7 +14,14 @@ namespace Nomina
             cboEstadoCivil.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEstadoEmpleado.DropDownStyle = ComboBoxStyle.DropDownList;
             cboSexo.DropDownStyle = ComboBoxStyle.DropDownList;
+
+
+
         }
+
+
+
+
         string[] sexos = { "M", "F" };
         string[] EstadoCivil2 = { "Soltero", "Casado" };
         string[] estado2 = { "Activo", "No Activo" };
@@ -50,8 +58,10 @@ namespace Nomina
 
             quincenal.SalarioBase = int.Parse(txtSalarioBase.Text);
             quincenal.HorasExtras = int.Parse(txtHorasExtras.Text);
-            quincenal.OtrosIngresos = double.Parse(txtMontoOtrasDeducciones.Text);
+            quincenal.OtrosIngresos = double.Parse(txtMontoOtrosIngresos.Text);
             quincenal.OtrasDeducciones = double.Parse(txtMontoOtrasDeducciones.Text);
+
+
         }
 
         private void frmEmpleados_Load(object sender, EventArgs e)
@@ -62,12 +72,22 @@ namespace Nomina
             dgvDatosEmpleado.RowTemplate.Height = 20;
             CrearCargarFicheroDatosEmpleados();
 
+
         }
+
+        private void btnAgregarEmpleado_Click(object sender, EventArgs e)
+        {
+            Agregar();
+           
+        }
+
 
 
         public void Agregar()
         {
-            if (Validar() == "")
+            if (Validar(txtPrimerNombre, txtSegundoNombre, txtPrimerApellido, txtSegundoApellido, txtCedula, txtDireccion,
+               txtTelefono, txtCelular, txtNoEmpleado, txtInss, txtRuc, txtSalarioBase, txtHorasExtras,
+               txtConceptoOtrosIngresos, txtMontoOtrosIngresos, txtConceptoOtrasDeducciones, txtMontoOtrasDeducciones))
             {
                 EnviarObjetos();
                 GrabarDatosEmpleados();
@@ -76,20 +96,37 @@ namespace Nomina
                 AgregarDataEmpleado();
 
             }
+           
         }
         public void AgregarDataEmpleado()
         {
             dgvDatosEmpleado.Rows.Add(txtNoEmpleado.Text, txtCedula.Text, txtInss.Text, txtRuc.Text,
                    txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text,
                    txtSegundoApellido.Text, FechaNacimiento.Text, cboSexo.Text, cboEstadoCivil.Text,
-                   txtDireccion.Text, txtTelefono.Text, txtTelefono.Text, FechaContratacion.Text
+                   txtDireccion.Text, txtTelefono.Text, txtCelular.Text, FechaContratacion.Text
                    , FechaCierreContrato.Text, txtSalarioBase.Text, cboEstadoEmpleado.Text);
 
         }
-        private string Validar()
+
+
+
+        private bool Validar(params TextBox[] textBoxes)
         {
-            return "";
+            foreach (TextBox textBox in textBoxes)
+            {
+                string texto = textBox.Text.Trim();
+                if (string.IsNullOrEmpty(texto))
+                {
+                    MessageBox.Show("Ninguno de los TextBox puede estar vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+            // Si todos los TextBox contienen datos, la validación es exitosa
+            return true;
         }
+
+
 
         private void FechaContratacion_ValueChanged(object sender, EventArgs e)
         {
@@ -162,7 +199,7 @@ namespace Nomina
 
             string datos = $"{txtNoEmpleado.Text},{txtCedula.Text},{txtInss.Text},{txtRuc.Text},{txtPrimerNombre.Text},{txtSegundoNombre.Text}," +
                 $"{txtPrimerApellido.Text},{txtSegundoApellido.Text},{FechaNacimiento.Text},{cboSexo.Text},{cboEstadoCivil.Text},{txtDireccion.Text}," +
-                $"{txtTelefono.Text},{txtTelefono.Text},{FechaContratacion.Text},{FechaCierreContrato.Text},{txtSalarioBase.Text},{cboEstadoEmpleado.Text}";
+                $"{txtTelefono.Text},{txtCelular.Text},{FechaContratacion.Text},{FechaCierreContrato.Text},{txtSalarioBase.Text},{cboEstadoEmpleado.Text}";
 
             archivo.WriteLine(datos);
             archivo.Close();
@@ -217,7 +254,7 @@ namespace Nomina
             }
             int maxLength = 8;
 
-            if (txtTelefono.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            if (txtCelular.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
             }
@@ -273,7 +310,7 @@ namespace Nomina
             }
             int maxLength = 5;
 
-            if (txtMontoOtrasDeducciones.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
+            if (txtMontoOtrosIngresos.Text.Length >= maxLength && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
             }
@@ -389,66 +426,51 @@ namespace Nomina
 
         private void txtRuc_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //if (e.KeyChar == (char)Keys.Back)
-            //{
-            //    e.Handled = false;
-            //    return;
-            //}
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+                return;
+            }
 
-            //if (txtRuc.Text.Length >= 14)
-            //{
-            //    e.Handled = true;
-            //    return;
-            //}
+            if (txtRuc.Text.Length >= 14)
+            {
+                e.Handled = true;
+                return;
+            }
 
-            //if (txtRuc.Text.Length == 0)
-            //{
-            //    if (char.IsLetter(e.KeyChar) && char.IsUpper(e.KeyChar))
-            //    {
-            //        e.Handled = false;
-            //    }
-            //    else
-            //    {
-            //        e.Handled = true;
-            //    }
-            //}
-            //else if (char.IsDigit(e.KeyChar))
-            //{
-            //    e.Handled = false;
-            //}
-            //else
-            //{
-            //    e.Handled = true;
-            //}
+            if (txtRuc.Text.Length == 0)
+            {
+                if (char.IsLetter(e.KeyChar) && char.IsUpper(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            else if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
 
 
 
-
-
-
-
-
-
-        private void BtnAgregar_Click(object sender, EventArgs e)
-        {
-            Agregar();
-        }
-
-        private void BtnExportar_Click_1(object sender, EventArgs e)
+        private void btnExportar_Click(object sender, EventArgs e)
         {
             ExportarExcel excel = new ExportarExcel();
             excel.ExportarAExcel(dgvDatosEmpleado);
         }
 
-
-        private void BtnCalcula_Click(object sender, EventArgs e)
+        private void btnPlanilla_Click(object sender, EventArgs e)
         {
-
-
-
-
+            frmTipoPlanilla tipo = new frmTipoPlanilla();
+            tipo.ShowDialog();
         }
     }
-
 }
