@@ -13,9 +13,12 @@ namespace Nomina
 {
     public partial class InterfazIU : Form
     {
-        public InterfazIU()
+        private readonly ApiClient _apiClient;
+        public InterfazIU(ApiClient apiClient)
         {
             InitializeComponent();
+            CenterToScreen();
+            _apiClient = apiClient;
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -42,7 +45,7 @@ namespace Nomina
 
         private void BtnPLanilla_Click(object sender, EventArgs e)
         {
-            AbrirForm(new frmEmpleados());
+            AbrirForm(new frmEmpleados(_apiClient));
         }
 
         private void AbrirForm(Object form)
@@ -68,19 +71,19 @@ namespace Nomina
             if (PanelMid.Controls.Count > 0)
             {
                 PanelMid.Controls.Clear();
-                AbrirForm(new frmNominaQuincenal());
+                AbrirForm(new frmNomina(_apiClient));
             }
-            
 
-           
+
+
         }
 
-        private void BtnMensual_Click(object sender, EventArgs e)
+        private void btnIngrDeduc_Click(object sender, EventArgs e)
         {
             if (PanelMid.Controls.Count > 0)
             {
                 PanelMid.Controls.Clear();
-                AbrirForm(new frmNominaMensual());
+                AbrirForm(new frmIngresosDeduc(_apiClient));
             }
         }
     }

@@ -29,151 +29,221 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtUser = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtPass = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnInicioSecion = new System.Windows.Forms.Button();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
-            this.SuspendLayout();
+            pictureBox1 = new PictureBox();
+            txtUser = new TextBox();
+            label1 = new Label();
+            lblUsuario = new Label();
+            txtPass = new TextBox();
+            lblContraseña = new Label();
+            btnInicioSesion = new Button();
+            btnMaximizar = new PictureBox();
+            btnMinimizar = new PictureBox();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            btnCrear = new Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnMaximizar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnMinimizar).BeginInit();
+            SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, -7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(278, 517);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, -7);
+            pictureBox1.Margin = new Padding(5, 3, 5, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(278, 517);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // txtUser
             // 
-            this.txtUser.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtUser.Font = new System.Drawing.Font("Cascadia Mono Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUser.ForeColor = System.Drawing.Color.Transparent;
-            this.txtUser.Location = new System.Drawing.Point(372, 177);
-            this.txtUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(439, 19);
-            this.txtUser.TabIndex = 3;
-            this.txtUser.Text = "USUARIO";
+            txtUser.BackColor = Color.CornflowerBlue;
+            txtUser.BorderStyle = BorderStyle.None;
+            txtUser.Font = new Font("Cascadia Mono Light", 12F);
+            txtUser.ForeColor = SystemColors.ActiveCaptionText;
+            txtUser.Location = new Point(373, 171);
+            txtUser.Margin = new Padding(5, 4, 5, 4);
+            txtUser.Name = "txtUser";
+            txtUser.Size = new Size(439, 24);
+            txtUser.TabIndex = 3;
+            txtUser.Text = "USUARIO";
+            txtUser.Enter += txtUser_Enter;
+            txtUser.Leave += txtUser_Leave;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cascadia Mono Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(531, 82);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 35);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "LOGIN";
+            label1.AutoSize = true;
+            label1.Font = new Font("Cascadia Mono Light", 20.25F);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.Location = new Point(533, 83);
+            label1.Margin = new Padding(5, 0, 5, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(120, 45);
+            label1.TabIndex = 5;
+            label1.Text = "LOGIN";
             // 
-            // label2
+            // lblUsuario
             // 
-            this.label2.AutoSize = true;
-            this.label2.Enabled = false;
-            this.label2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label2.Location = new System.Drawing.Point(367, 200);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(444, 20);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "................................................................................." +
-    "................................................................";
+            lblUsuario.AutoSize = true;
+            lblUsuario.Enabled = false;
+            lblUsuario.ForeColor = Color.Gainsboro;
+            lblUsuario.Location = new Point(367, 199);
+            lblUsuario.Margin = new Padding(5, 0, 5, 0);
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Size = new Size(444, 20);
+            lblUsuario.TabIndex = 6;
+            lblUsuario.Text = ".................................................................................................................................................";
             // 
             // txtPass
             // 
-            this.txtPass.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.txtPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPass.Font = new System.Drawing.Font("Cascadia Mono Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPass.ForeColor = System.Drawing.Color.Transparent;
-            this.txtPass.Location = new System.Drawing.Point(367, 267);
-            this.txtPass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(439, 19);
-            this.txtPass.TabIndex = 7;
-            this.txtPass.Text = "CONTRASEÑA";
+            txtPass.BackColor = Color.CornflowerBlue;
+            txtPass.BorderStyle = BorderStyle.None;
+            txtPass.Font = new Font("Cascadia Mono Light", 12F);
+            txtPass.ForeColor = SystemColors.ActiveCaptionText;
+            txtPass.Location = new Point(367, 267);
+            txtPass.Margin = new Padding(5, 4, 5, 4);
+            txtPass.Name = "txtPass";
+            txtPass.Size = new Size(439, 24);
+            txtPass.TabIndex = 7;
+            txtPass.Text = "CONTRASEÑA";
+            txtPass.Enter += txtPass_Enter;
+            txtPass.Leave += txtPass_Leave;
             // 
-            // label3
+            // lblContraseña
             // 
-            this.label3.AutoSize = true;
-            this.label3.Enabled = false;
-            this.label3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label3.Location = new System.Drawing.Point(367, 290);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(444, 20);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "................................................................................." +
-    "................................................................";
+            lblContraseña.AutoSize = true;
+            lblContraseña.Enabled = false;
+            lblContraseña.ForeColor = Color.Gainsboro;
+            lblContraseña.Location = new Point(367, 289);
+            lblContraseña.Margin = new Padding(5, 0, 5, 0);
+            lblContraseña.Name = "lblContraseña";
+            lblContraseña.Size = new Size(444, 20);
+            lblContraseña.TabIndex = 8;
+            lblContraseña.Text = ".................................................................................................................................................";
             // 
-            // btnInicioSecion
+            // btnInicioSesion
             // 
-            this.btnInicioSecion.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnInicioSecion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInicioSecion.ForeColor = System.Drawing.Color.Transparent;
-            this.btnInicioSecion.Location = new System.Drawing.Point(348, 385);
-            this.btnInicioSecion.Name = "btnInicioSecion";
-            this.btnInicioSecion.Size = new System.Drawing.Size(463, 53);
-            this.btnInicioSecion.TabIndex = 9;
-            this.btnInicioSecion.Text = "ACCEDER";
-            this.btnInicioSecion.UseVisualStyleBackColor = false;
+            btnInicioSesion.BackColor = Color.CornflowerBlue;
+            btnInicioSesion.FlatAppearance.BorderSize = 0;
+            btnInicioSesion.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            btnInicioSesion.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
+            btnInicioSesion.FlatStyle = FlatStyle.Flat;
+            btnInicioSesion.Font = new Font("Cascadia Mono Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnInicioSesion.ForeColor = SystemColors.ActiveCaptionText;
+            btnInicioSesion.Location = new Point(451, 332);
+            btnInicioSesion.Margin = new Padding(5, 3, 5, 3);
+            btnInicioSesion.Name = "btnInicioSesion";
+            btnInicioSesion.Size = new Size(225, 53);
+            btnInicioSesion.TabIndex = 9;
+            btnInicioSesion.Text = "ACCEDER";
+            btnInicioSesion.UseVisualStyleBackColor = false;
+            btnInicioSesion.Click += btnInicioSesion_Click;
             // 
             // btnMaximizar
             // 
-            this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
-            this.btnMaximizar.Location = new System.Drawing.Point(831, 1);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(54, 50);
-            this.btnMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnMaximizar.TabIndex = 10;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            btnMaximizar.Image = (Image)resources.GetObject("btnMaximizar.Image");
+            btnMaximizar.Location = new Point(831, 1);
+            btnMaximizar.Margin = new Padding(5, 3, 5, 3);
+            btnMaximizar.Name = "btnMaximizar";
+            btnMaximizar.Size = new Size(54, 51);
+            btnMaximizar.SizeMode = PictureBoxSizeMode.StretchImage;
+            btnMaximizar.TabIndex = 10;
+            btnMaximizar.TabStop = false;
+            btnMaximizar.Click += btnMaximizar_Click;
             // 
             // btnMinimizar
             // 
-            this.btnMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.Image")));
-            this.btnMinimizar.Location = new System.Drawing.Point(771, 1);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(54, 50);
-            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btnMinimizar.TabIndex = 11;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            btnMinimizar.Image = (Image)resources.GetObject("btnMinimizar.Image");
+            btnMinimizar.Location = new Point(773, 1);
+            btnMinimizar.Margin = new Padding(5, 3, 5, 3);
+            btnMinimizar.Name = "btnMinimizar";
+            btnMinimizar.Size = new Size(54, 51);
+            btnMinimizar.SizeMode = PictureBoxSizeMode.StretchImage;
+            btnMinimizar.TabIndex = 11;
+            btnMinimizar.TabStop = false;
+            btnMinimizar.Click += btnMinimizar_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(698, 365);
+            label2.Name = "label2";
+            label2.Size = new Size(0, 20);
+            label2.TabIndex = 12;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Cascadia Mono Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ActiveCaptionText;
+            label3.Location = new Point(475, 388);
+            label3.Name = "label3";
+            label3.Size = new Size(210, 25);
+            label3.TabIndex = 13;
+            label3.Text = "¿NO TIENES CUENTA?";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Cascadia Mono Light", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = SystemColors.ActiveCaptionText;
+            label4.Location = new Point(499, 415);
+            label4.Name = "label4";
+            label4.Size = new Size(133, 25);
+            label4.TabIndex = 14;
+            label4.Text = "CREALA AQUI";
+            // 
+            // btnCrear
+            // 
+            btnCrear.BackColor = Color.CornflowerBlue;
+            btnCrear.FlatAppearance.BorderSize = 0;
+            btnCrear.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            btnCrear.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
+            btnCrear.FlatStyle = FlatStyle.Flat;
+            btnCrear.Font = new Font("Cascadia Mono Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCrear.ForeColor = SystemColors.ActiveCaptionText;
+            btnCrear.Location = new Point(477, 461);
+            btnCrear.Margin = new Padding(5, 3, 5, 3);
+            btnCrear.Name = "btnCrear";
+            btnCrear.Size = new Size(176, 36);
+            btnCrear.TabIndex = 15;
+            btnCrear.Text = "CREAR CUENTA";
+            btnCrear.UseVisualStyleBackColor = false;
+            btnCrear.Click += btnCrear_Click;
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(888, 503);
-            this.Controls.Add(this.btnMinimizar);
-            this.Controls.Add(this.btnMaximizar);
-            this.Controls.Add(this.btnInicioSecion);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtPass);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtUser);
-            this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmLogin";
-            this.Opacity = 0.9D;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmLogin";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.CornflowerBlue;
+            ClientSize = new Size(888, 509);
+            Controls.Add(btnCrear);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(btnMinimizar);
+            Controls.Add(btnMaximizar);
+            Controls.Add(btnInicioSesion);
+            Controls.Add(lblContraseña);
+            Controls.Add(txtPass);
+            Controls.Add(lblUsuario);
+            Controls.Add(label1);
+            Controls.Add(txtUser);
+            Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(5, 3, 5, 3);
+            Name = "frmLogin";
+            Opacity = 0.9D;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "frmLogin";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnMaximizar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnMinimizar).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -181,11 +251,15 @@
         private PictureBox pictureBox1;
         private TextBox txtUser;
         private Label label1;
-        private Label label2;
+        private Label lblUsuario;
         private TextBox txtPass;
-        private Label label3;
-        private Button btnInicioSecion;
+        private Label lblContraseña;
+        private Button btnInicioSesion;
         private PictureBox btnMaximizar;
         private PictureBox btnMinimizar;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Button btnCrear;
     }
 }
