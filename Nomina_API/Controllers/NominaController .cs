@@ -27,13 +27,13 @@ namespace Nomina_API.Controllers
         public readonly I_IngresoRepository _ingresoRepo;
         public readonly IDeduccionRepository _deduccionRepo;
         private readonly INominaRepository _nominaRepo;
-        private readonly ILogger<IngresoController> _logger;
+        private readonly ILogger<NominaController> _logger;
         private readonly IMapper _mapper;
 
 
         public NominaController(IEmpleadoRepository empleadoRepo,I_IngresoRepository i_Ingreso,IDeduccionRepository deducRepo,
             INominaRepository nominaRepo,
-            ILogger<IngresoController> logger,
+            ILogger<NominaController> logger,
             IMapper mapper)
         {
             _nominaRepo = nominaRepo;
